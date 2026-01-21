@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Sun, Moon, Languages, HelpCircle, Download, FileJson, FileSpreadsheet, FileUp } from 'lucide-react';
+import { Sun, Moon, Languages, HelpCircle, Download, FileJson, FileSpreadsheet, FileUp, ExternalLink } from 'lucide-react';
 
 export default function Home() {
   const [isDark, setIsDark] = useState(true);
@@ -25,6 +25,7 @@ export default function Home() {
       btnDownloadJson: "JSONを保存",
       btnDownloadCsv: "CSVを保存",
       helpTitle: "ファイル連携のガイド",
+      helpManual: "詳細なマニュアル（外部サイト）",
       help1: "1. スプレッドシートを「リンクを知っている全員」に公開します。",
       help2: "2. 左の枠でIDを入力し、JSONを保存してGDevelopで読み込みます。",
       help3: "3. GDevelopのJSONを右の枠に貼り、CSVを保存します。",
@@ -42,6 +43,7 @@ export default function Home() {
       btnDownloadJson: "Download JSON",
       btnDownloadCsv: "Download CSV",
       helpTitle: "Quick Guide",
+      helpManual: "Detailed Manual (External Site)",
       help1: "1. Set Sheet access to 'Anyone with the link'.",
       help2: "2. Enter ID on left and save JSON for GDevelop.",
       help3: "3. Paste GDevelop JSON on right to create CSV.",
@@ -116,9 +118,9 @@ export default function Home() {
         </header>
 
         {showHelp && (
-          <div className={`${isDark ? 'bg-blue-900/20 border-blue-500/30 text-slate-300' : 'bg-blue-100 border-blue-200 text-blue-900'} border p-6 rounded-3xl shadow-inner`}>
+          <div className={`${isDark ? 'bg-blue-900/20 border-blue-500/30 text-slate-300' : 'bg-blue-100 border-blue-200 text-blue-900'} border p-6 rounded-3xl shadow-inner animate-in fade-in slide-in-from-top-4 duration-300`}>
             <h3 className={`font-black mb-4 flex items-center gap-2 text-lg ${isDark ? 'text-blue-400' : 'text-blue-700'}`}><HelpCircle size={22}/> {t.helpTitle}</h3>
-            <div className="grid md:grid-cols-2 gap-6 text-sm">
+            <div className="grid md:grid-cols-2 gap-6 text-sm mb-6">
               <div className="space-y-2">
                 <p className="font-bold text-blue-500 uppercase tracking-wider">Sheet → GDevelop</p>
                 <p>{t.help1}</p><p>{t.help2}</p>
@@ -128,6 +130,14 @@ export default function Home() {
                 <p>{t.help3}</p><p>{t.help4}</p>
               </div>
             </div>
+            <a 
+              href="https://cratier-gd.blogspot.com/p/gdsp-converter.html" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs font-bold bg-white/50 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-800 px-4 py-2 rounded-full transition-colors border border-blue-200 dark:border-blue-500/30"
+            >
+              <ExternalLink size={14} /> {t.helpManual}
+            </a>
           </div>
         )}
 
